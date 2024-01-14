@@ -29,7 +29,7 @@ crossorigin="anonymous"
     
     var vals = []; // 配列を定義
 
-    //平均が選択された場合、平均以外と日単位の期間を選択できなくする
+    //↓平均が選択された場合、平均以外と日単位の期間を選択できなくする
 
     //各Chekboxのドキュメント
     let average = document.getElementById("average");
@@ -160,7 +160,7 @@ crossorigin="anonymous"
     let day_last;
 
     //テキストボックスの内容が変わったら
-    x_date_top.oninput=function(){
+    x_date_top.onchange=function(){
         top_arry = x_date_top.value.split('/');
 
         for(var i=0; i < top_arry.length; i++){
@@ -174,10 +174,10 @@ crossorigin="anonymous"
                 day_top = x_date_top.value;
             }
         }
-        compareTopLast();
+        console.log(top_arry);
     }
 
-    x_date_last.oninput=function(){
+    x_date_last.onchange=function(){
         last_arry = x_date_last.value.split('/');
 
         for(var i=0; i < last_arry.length; i++){
@@ -191,8 +191,7 @@ crossorigin="anonymous"
                 day_last = x_date_last.value;
             }
         }
-        console.log(year_last+' '+month_last+' '+day_last);
-        compareTopLast();
+        console.log(last_arry);
     }
     
     function graphDataSet(){
@@ -200,7 +199,9 @@ crossorigin="anonymous"
             'url':'{% url "test:graphCreatData %}',
             'type':'POST',
             'data':{
-                'x_data':vals,
+                'y_data':vals,
+                'x_top_data':top_arry,
+                'x_last_data':last_arry,
             },
             'dataType': 'json'
         })
