@@ -19,16 +19,23 @@ def index_template(request):
     return render(request, 'index.html')
 
 def graphCreatData(request):
+    if '平均気温' in request.POST.get('y_data'):
+
+    elif '最高平均気温' in request.POST.get('y_data'):
+
+    elif '最低平均気温' in request.POST.get('y_data'):
+
+    elif '最高気温' in request.POST.get('y_data')
     #グラフオブジェクト
         a = 1
-        qs    = demo_data  #モデルクラス(ProductAテーブル)読込
-        x     = [x.Date for x in qs]           #X軸データ
-        y     = [y.Revenue for y in qs]        #Y軸データ
+        qs    = models.Year.objects.all()  #モデルクラス(ProductAテーブル)読込
+        x     = [x.year for x in qs]           #X軸データ
+        y     = [y.average for y in qs]        #Y軸データ
         chart = graph.Plot_Graph(x,y)          #グラフ作成
 
         #変数を渡す
         context = super().get_context_data(**kwargs)
         context['chart'] = chart
-    #return(a)
+    return(context)
 
 

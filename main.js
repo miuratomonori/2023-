@@ -173,6 +173,9 @@ crossorigin="anonymous"
             else if(i == 2 && top_arry[i] == 1 && top_arry[i].match(/^[0-9]*$/) != null){
                 day_top = x_date_top.value;
             }
+            else{
+                console.log('入力エラー');
+            }
         }
         console.log(top_arry);
     }
@@ -181,14 +184,17 @@ crossorigin="anonymous"
         last_arry = x_date_last.value.split('/');
 
         for(var i=0; i < last_arry.length; i++){
-            if(i == 0 && last_arry[i] >= 1946 && last_arry[i] <= 2022 && last_arry[i].match(/^[0-9]*$/) != null){
-                year_last = last_arry[i];
+            if(i == 0 && last_arry[i] <= 1946 && last_arry[i] >= 2022 && last_arry[i].match(/^[0-9]*$/) == null){
+                console.log('入力エラー');
             }
-            else if(i == 1 && last_arry[i] >= 1 && last_arry[i] <= 12 && last_arry[i].match(/^[0-9]*$/) != null){
-                month_last = last_arry[i];
+            else if(i == 1 && last_arry[i] <= 1 && last_arry[i] >= 12 && last_arry[i].match(/^[0-9]*$/) == null){
+                console.log('入力エラー');
             }
-            else if(i == 2 && last_arry[i] == 1 && last_arry[i].match(/^[0-9]*$/) != null){
-                day_last = x_date_last.value;
+            else if(i == 2 && last_arry[i] <= 1 && last_arry[i].match(/^[0-9]*$/) == null){
+                console.log('入力エラー');
+            }
+            else{
+                console.log('入力エラー');
             }
         }
         console.log(last_arry);
